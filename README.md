@@ -2,6 +2,10 @@
   <img src="./bcc-ukdw/logo.jpeg" alt="BCC UKDW — Duta Wacana Web3" width="180" />
 </p>
 
+<p align="center">
+  <a href="https://bccukdw.xyz"><img src="https://img.shields.io/badge/Website-bccukdw.xyz-1E4FD8?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website BCC UKDW" /></a>
+</p>
+
 # UG Blockchain Challenges
 
 Kumpulan challenge **audit smart contract** **UG (Unguided)** dari **BCC UKDW — Duta Wacana Web3**, terbuka untuk mahasiswa maupun publik.
