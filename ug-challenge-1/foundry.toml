@@ -1,0 +1,14 @@
+[profile.default]
+src = "src"
+test = "submissions"
+out = "out"
+libs = ["lib"]
+remappings = ["forge-std/=lib/forge-std/src/"]
+
+[fuzz]
+runs = 256
+
+[invariant]
+runs = 256
+depth = 50
+fail_on_revert = false
