@@ -1,0 +1,3 @@
+# Script dan data cek harus selalu memakai akhir baris LF, termasuk saat di-clone di Windows.
+*.sh text eol=lf
+.check-data text eol=lf

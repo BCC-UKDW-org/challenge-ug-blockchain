@@ -1,6 +1,6 @@
 # Jawaban — Challenge 01: Vault Invariant Hunter
 
-- **Nama / NIM:** 
+- **Nama:** 
 - **GitHub:** @
 - **Jalur belajar:** Lengkap / Cepat
 

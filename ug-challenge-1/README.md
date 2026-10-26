@@ -3,13 +3,14 @@
 | | |
 |---|---|
 | **Level** | Beginner → Intermediate |
+| **Basis materi** | [Cyfrin Updraft — Smart Contract Security](https://updraft.cyfrin.io/courses/security), section **Review** (Fuzzing & Invariants) |
 | **Tools** | Solidity, Foundry (Forge) |
-| **Estimasi waktu** | Belajar materi 3–8 jam (tergantung jalur) + mengerjakan 45–90 menit per part |
+| **Estimasi waktu** | Menonton materi 2–8 jam (tergantung jalur) + mengerjakan 45–90 menit per part |
 | **Fokus** | Stateless fuzzing, stateful fuzzing, invariant, handler, reentrancy, menulis laporan audit |
-| **Submit** | PR bertahap per part, baca [aturan & tata cara](../README.md) |
+| **Cek jawaban** | `./check.sh` (lihat [Cek mandiri](#️-cek-mandiri-dengan-checksh)) |
 
 > ⚠️ **Sebelum mulai, baca [Aturan Utama](../README.md#️-aturan-utama--wajib-dibaca).**
-> AI hanya boleh dipakai seperti Google, yaitu untuk mencari dokumentasi dan konsep. **Kode, penjelasan, dan laporan harus kamu tulis sendiri.** Kamu akan diminta menjelaskan setiap barisnya.
+> AI hanya boleh dipakai seperti Google, yaitu untuk mencari dokumentasi dan konsep. **Kode, penjelasan, dan laporan harus kamu tulis sendiri.**
 
 ---
 
@@ -38,44 +39,41 @@ Developer mengklaim bahwa *"vault ini aman dan pembukuannya selalu benar."*
 
 ---
 
-## 📚 Part 0 — Belajar Dulu
+## 📺 Part 0 — Wajib Tonton Cyfrin Updraft Dulu
 
-Jangan lompat langsung ke soal. Challenge ini akan terasa mustahil kalau konsep dasarnya belum dipahami, dan kamu akan tergoda menyuruh AI mengerjakannya. Pilih jalur sesuai kemampuanmu.
+Challenge ini dibangun di atas materi **Cyfrin Updraft**. Tonton dulu materinya **sebelum** membuka soal. Tanpa konteks dari video, challenge ini akan terasa mustahil, dan kamu akan tergoda menyuruh AI mengerjakannya.
 
-### 🟢 Jalur Lengkap (belum pernah memakai Solidity atau Foundry)
+### ✅ Wajib (semua peserta)
 
-Kerjakan berurutan:
+Section **Review** dari course [Smart Contract Security](https://updraft.cyfrin.io/courses/security):
 
-| # | Materi | Sumber | Yang harus kamu kuasai |
-|---|---|---|---|
-| 1 | Dasar Solidity | [Cyfrin Updraft — Solidity Smart Contract Development](https://updraft.cyfrin.io/courses/solidity) | `mapping`, `msg.sender`, `msg.value`, `payable`, `require` |
-| 2 | Dasar Foundry | [Cyfrin Updraft — Foundry Fundamentals](https://updraft.cyfrin.io/courses/foundry) | `forge init`, `forge test`, struktur test, `setUp()` |
-| 3 | Cheatcodes | [Foundry Book — Cheatcodes](https://getfoundry.sh/reference/cheatcodes/overview) | `vm.prank`, `vm.deal`, `vm.expectRevert`, `makeAddr` |
-| 4 | Lanjut ke **Jalur Cepat** ⬇️ | | |
+- [ ] [Tooling Prerequisites](https://updraft.cyfrin.io/courses/security/review/tooling-requisites)
+- [ ] [Solidity Prerequisites](https://updraft.cyfrin.io/courses/security/review/solidity-requisites)
+- [ ] ⭐ [Fuzzing and Invariants](https://updraft.cyfrin.io/courses/security/review/fuzzing-and-invariants)
+- [ ] [Fallback and Receive](https://updraft.cyfrin.io/courses/security/review/fallback-and-receive) (dibutuhkan untuk Part D)
 
-### 🔵 Jalur Cepat (sudah bisa Solidity dan Foundry dasar)
+### 🟢 Belum pernah memakai Solidity atau Foundry? Tonton ini dulu
 
-| # | Materi | Sumber |
+| # | Course | Yang harus kamu kuasai |
 |---|---|---|
-| 1 | ⭐ **Wajib:** Fuzzing & Invariants | [Cyfrin Updraft — Security: Fuzzing and Invariants](https://updraft.cyfrin.io/courses/security/review/fuzzing-and-invariants) |
-| 2 | Fuzz testing di Foundry | [Foundry Book — Fuzz Testing](https://getfoundry.sh/forge/fuzz-testing) |
-| 3 | Invariant testing & handler | [Foundry Book — Invariant Testing](https://getfoundry.sh/forge/invariant-testing) |
-| 4 | Membatasi input fuzz | [forge-std — `bound()`](https://getfoundry.sh/reference/forge-std/bound) |
-| 5 | Artikel: fuzzing & invariant | [Cyfrin Blog — Fuzz and Invariant Tests in Foundry](https://www.cyfrin.io/blog/smart-contract-fuzzing-and-invariants-testing-foundry) |
-| 6 | Artikel: invariant testing | [RareSkills — Invariant Testing in Solidity](https://rareskills.io/post/invariant-testing-solidity) |
-| 7 | Reentrancy | [Solidity by Example — Re-Entrancy](https://solidity-by-example.org/hacks/re-entrancy/) |
-| 8 | Checks-Effects-Interactions | [Solidity Docs — Security Considerations](https://docs.soliditylang.org/en/latest/security-considerations.html) |
+| 1 | [Solidity Smart Contract Development](https://updraft.cyfrin.io/courses/solidity) | `mapping`, `msg.sender`, `msg.value`, `payable`, `require` |
+| 2 | [Foundry Fundamentals](https://updraft.cyfrin.io/courses/foundry) | `forge test`, struktur test, `setUp()`, cheatcodes |
 
-**Bacaan tambahan (opsional, sangat direkomendasikan):**
+### 📖 Dokumentasi pendamping (dipakai saat mengerjakan)
 
-- [Cyfrin Updraft — Smart Contract Security (full course)](https://updraft.cyfrin.io/courses/security)
-- [Trail of Bits — Building Secure Contracts](https://secure-contracts.com/), terutama bagian fuzzing
-- [Source code `StdInvariant.sol`](https://github.com/foundry-rs/forge-std/blob/master/src/StdInvariant.sol): baca `targetContract`, `targetSender`, dan `targetSelector`
-- [Cyfrin Audit Reports](https://github.com/Cyfrin/cyfrin-audit-reports) dan [Code4rena Reports](https://code4rena.com/reports): contoh laporan audit sungguhan
+| Topik | Sumber |
+|---|---|
+| Fuzz testing di Foundry | [Foundry Book — Fuzz Testing](https://getfoundry.sh/forge/fuzz-testing) |
+| Invariant testing & handler | [Foundry Book — Invariant Testing](https://getfoundry.sh/forge/invariant-testing) |
+| Cheatcodes (`vm.prank`, `vm.deal`, ...) | [Foundry Book — Cheatcodes](https://getfoundry.sh/reference/cheatcodes/overview) |
+| Membatasi input fuzz | [forge-std — `bound()`](https://getfoundry.sh/reference/forge-std/bound) |
+| Artikel fuzzing & invariant | [Cyfrin Blog](https://www.cyfrin.io/blog/smart-contract-fuzzing-and-invariants-testing-foundry), [RareSkills](https://rareskills.io/post/invariant-testing-solidity) |
+| Reentrancy & CEI | [Solidity by Example](https://solidity-by-example.org/hacks/re-entrancy/), [Solidity Docs — Security Considerations](https://docs.soliditylang.org/en/latest/security-considerations.html) |
+| Source `StdInvariant.sol` | [forge-std](https://github.com/foundry-rs/forge-std/blob/master/src/StdInvariant.sol) |
 
 ### ✅ Self-check sebelum mulai
 
-Jawab di kepalamu (tidak perlu dikumpulkan). Kalau ada lebih dari dua yang belum bisa kamu jawab, kembali ke materi.
+Jawab di kepalamu. Kalau ada lebih dari dua yang belum bisa kamu jawab, tonton ulang materinya.
 
 - [ ] Apa beda **fuzz test** dan **unit test**?
 - [ ] Apa itu **invariant**? Beri satu contoh dari kehidupan sehari-hari (misalnya pembukuan kas).
@@ -94,7 +92,6 @@ Proyek Foundry sudah disiapkan, jadi kamu **tidak perlu** menjalankan `forge ini
 ```bash
 cd ug-challenge-1
 forge build
-cp -r submissions/_template submissions/<username-github>
 ```
 
 Struktur folder:
@@ -102,32 +99,28 @@ Struktur folder:
 ```text
 ug-challenge-1/
 ├── src/
-│   └── SimpleVault.sol           ← kontrak yang diaudit (JANGAN diubah)
-├── submissions/
-│   ├── _template/                ← jangan diedit, cukup disalin
-│   │   ├── SimpleVault.t.sol     ← kerangka test
-│   │   ├── ANSWERS.md            ← penjelasan & jawaban per part
-│   │   └── FINDINGS.md           ← laporan bug (Part D)
-│   └── <username-github>/        ← folder kerjamu
-├── check.sh                      ← cek mandiri (mutation testing)
+│   └── SimpleVault.sol      ← kontrak yang diaudit (JANGAN diubah)
+├── test/
+│   └── SimpleVault.t.sol    ← kerangka test: tulis test-mu di sini
+├── ANSWERS.md               ← penjelasan & jawaban per part
+├── FINDINGS.md              ← laporan bug (Part D)
+├── check.sh                 ← cek mandiri
 └── foundry.toml
 ```
 
-Jalankan test **khusus folder kamu**:
+Semua test ditulis di folder `test/`. Kamu boleh menambah file baru di sana, misalnya `test/Handler.sol` atau `test/Attacker.sol`.
 
 ```bash
-forge test --match-path "submissions/<username-github>/*" -vvv
+forge test -vvv
 ```
-
-> Kamu boleh menambah file baru di folder kerjamu, misalnya `Handler.sol` atau `Attacker.sol`.
 
 ### ✔️ Cek mandiri dengan `check.sh`
 
-Kamu bisa mengecek sendiri apakah test-mu sudah benar, tanpa menunggu mentor:
+Benar atau tidaknya pekerjaanmu ditentukan oleh `check.sh`:
 
 ```bash
-./check.sh <username-github> A      # cek Part A saja
-./check.sh <username-github>        # cek semua part
+./check.sh A      # cek Part A saja
+./check.sh        # cek semua part
 ```
 
 **Cara kerjanya:** test milikmu dijalankan terhadap beberapa versi `SimpleVault`, yaitu versi asli, versi yang sudah diperbaiki, dan beberapa versi yang **sengaja dirusak** (*mutation testing*). Test yang baik harus **lulus** di versi yang benar dan **gagal** di versi yang rusak. Test yang tetap hijau padahal kontraknya dirusak berarti tidak menguji apa-apa.
@@ -150,11 +143,11 @@ Supaya bisa dikenali `check.sh`, **nama test wajib** mengikuti aturan berikut:
 | D1 | diawali `test_PoC_`, contoh `test_PoC_NamaBugnya()` |
 | D2 | diawali `test_Reentrancy`, contoh `test_ReentrancyAttack()` |
 
-> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` tetap dinilai manual dan menjadi bahan defense. Semua ✅ tanpa bisa menjelaskan = belum lulus.
+> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan menjadi bahan tanya jawab saat praktikum. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
 >
-> Versi-versi kontrak di dalam `check.sh` disimpan dalam base64 supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
+> Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >
-> Pengguna Windows: jalankan lewat **Git Bash** atau **WSL**.
+> Pengguna Windows: jalankan dari terminal **Ubuntu (WSL)**, lihat [panduan instalasi](../README.md#️-instalasi-cukup-sekali).
 
 ---
 
@@ -214,7 +207,7 @@ Isi tabel ini di `ANSWERS.md`. Auditor selalu memetakan efek setiap fungsi terha
 
 ### Tugas A1 — Fuzz test `deposit()`
 
-Di `submissions/<username>/SimpleVault.t.sol`, buat:
+Di `test/SimpleVault.t.sol`, buat:
 
 ```solidity
 function testFuzz_Deposit(uint96 amount) public {
@@ -235,7 +228,7 @@ function testFuzz_Deposit(uint96 amount) public {
 ### Tugas A2 — Jalankan & analisis
 
 ```bash
-forge test --match-path "submissions/<username>/*" --match-test testFuzz_Deposit -vvv
+forge test --match-test testFuzz_Deposit -vvv
 ```
 
 Jawab di `ANSWERS.md`:
@@ -269,9 +262,7 @@ Jepit `amount` ke rentang `[1, 100 ether]` dengan `bound`. Perhatikan bahwa `bou
 
 </details>
 
-**✔️ Cek mandiri:** `./check.sh <username> A`
-
-**📤 Submit:** PR `[UG-1][Part A] <username>` berisi test + `ANSWERS.md` bagian Tabel Fungsi & Part A.
+**✔️ Cek mandiri:** `./check.sh A`. Lanjut ke part berikutnya kalau semua sudah ✅.
 
 ---
 
@@ -316,7 +307,7 @@ contract SimpleVaultTest is Test {
 Pertama, coba versi paling naif: di `setUp()`, daftarkan `targetContract(address(vault))`, lalu jalankan:
 
 ```bash
-forge test --match-path "submissions/<username>/*" --match-test invariant_ -vvv
+forge test --match-test invariant_ -vvv
 ```
 
 Jawab di `ANSWERS.md`:
@@ -339,9 +330,7 @@ Baca bagian *target contracts*, *target senders*, dan *handler-based testing* di
 
 </details>
 
-**✔️ Cek mandiri:** `./check.sh <username> B`
-
-**📤 Submit:** PR `[UG-1][Part B] <username>` berisi rumusan invariant, test naif, dan analisismu terhadap hasilnya.
+**✔️ Cek mandiri:** `./check.sh B`. Lanjut ke part berikutnya kalau semua sudah ✅.
 
 ---
 
@@ -408,7 +397,7 @@ Handler harus memenuhi syarat berikut:
 Ubah `setUp()` agar menargetkan **handler**, bukan vault. Lalu jalankan:
 
 ```bash
-forge test --match-path "submissions/<username>/*" --match-test invariant_ -vvv
+forge test --match-test invariant_ -vvv
 ```
 
 Jawab di `ANSWERS.md`:
@@ -441,9 +430,7 @@ Di handler, `actor = actors[actorSeed % actors.length]`. Untuk deposit, `amount 
 
 **🌟 Bonus C — Ghost variables:** tambahkan variabel di handler seperti `ghost_totalDeposited` dan `ghost_totalWithdrawn` yang mencatat apa yang **seharusnya** terjadi. Tulis invariant yang membandingkan nilai ghost dengan state vault. Apa kelebihan pendekatan ini?
 
-**✔️ Cek mandiri:** `./check.sh <username> C`
-
-**📤 Submit:** PR `[UG-1][Part C] <username>` berisi handler, invariant, call sequence, dan analisisnya.
+**✔️ Cek mandiri:** `./check.sh C`. Lanjut ke part berikutnya kalau semua sudah ✅.
 
 ---
 
@@ -507,9 +494,7 @@ Kontrak `Attacker` cukup berisi: fungsi `attack()` yang melakukan deposit lalu w
 
 </details>
 
-**✔️ Cek mandiri:** `./check.sh <username> D`
-
-**📤 Submit:** PR `[UG-1][Part D] <username>` berisi `FINDINGS.md`, test PoC, `Attacker`, dan jawaban D1–D3.
+**✔️ Cek mandiri:** `./check.sh D`. Lanjut ke part berikutnya kalau semua sudah ✅.
 
 ---
 
@@ -524,16 +509,15 @@ Kontrak `Attacker` cukup berisi: fungsi `attack()` yang melakukan deposit lalu w
 | D2 | Reentrancy dianalisis dan **dibuktikan** dengan test `Attacker`. | Test + penjelasan CEI |
 | D3 | Keterbatasan invariant testing dijelaskan dengan minimal dua alasan. | Jawaban di `ANSWERS.md` |
 
-Tidak perlu menyelesaikan semuanya sekaligus. Satu part, satu PR, satu review.
+Tidak perlu menyelesaikan semuanya sekaligus. Satu part, satu `./check.sh`, lalu lanjut.
 
 ---
 
 ## 🚀 Mulai Sekarang
 
-1. Selesaikan **Part 0** sesuai jalurmu.
+1. Tonton materi **Part 0** di Cyfrin Updraft.
 2. Isi **Tabel Fungsi** di `ANSWERS.md`.
-3. Kerjakan **Part A**, lalu buka PR.
-
-Mentor akan memeriksa kode dan penjelasanmu, menunjukkan bagian yang benar atau keliru, dan memberi arahan **tanpa** membocorkan solusi part berikutnya.
+3. Kerjakan **Part A**, lalu jalankan `./check.sh A`.
+4. Semua ✅? Lanjut ke Part B, dan seterusnya.
 
 Target akhirnya: kamu mampu menulis invariant test sendiri dan memahami cara security researcher menggunakan Foundry untuk menemukan bug, **tanpa bergantung pada AI**.

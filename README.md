@@ -6,25 +6,46 @@
 
 Kumpulan challenge **audit smart contract** untuk praktikum **UG (Unguided)** di Universitas Kristen Duta Wacana, dan terbuka juga untuk publik.
 
-Repositori ini bukan sekadar kumpulan soal. Tujuannya melatih kamu **berpikir seperti security researcher**: membaca kode secara curiga, merumuskan aturan yang seharusnya selalu benar, lalu membuktikan pelanggarannya dengan test.
+Seluruh challenge di repo ini disusun berdasarkan materi **[Cyfrin Updraft — Smart Contract Security](https://updraft.cyfrin.io/courses/security)**. Setiap challenge memetakan satu section Updraft ke sebuah kontrak baru yang **orisinal**, sehingga kamu tidak bisa sekadar menyalin laporan audit yang sudah beredar.
 
-> **Unguided** artinya kamu tidak akan disuapi jawaban. Kamu akan diberi arah, dokumentasi, dan petunjuk bertingkat. Sisanya harus kamu kerjakan sendiri.
+Tujuannya melatih kamu **berpikir seperti security researcher**: membaca kode secara curiga, merumuskan aturan yang seharusnya selalu benar, lalu membuktikan pelanggarannya dengan test.
+
+> **Unguided** artinya kamu tidak akan disuapi jawaban. Kamu akan diberi materi, arah, dokumentasi, dan petunjuk bertingkat. Sisanya harus kamu kerjakan sendiri. Benar atau tidaknya pekerjaanmu ditentukan oleh **test case otomatis** (`check.sh`).
+
+### 🚦 Mulai di sini
+
+1. Baca [**Aturan Utama**](#️-aturan-utama--wajib-dibaca), terutama aturan penggunaan AI.
+2. Ikuti [**Instalasi**](#️-instalasi-cukup-sekali) langkah 1–6 (cukup sekali).
+3. Coba [**Pemanasan: test pertamamu**](#pemanasan-test-pertamamu) supaya terbiasa menulis dan menjalankan test.
+4. Buka [**Challenge 01**](./ug-challenge-1/) dan kerjakan berurutan sampai Challenge 08.
 
 ---
 
-## Daftar Challenge
+## 🗺️ Daftar Challenge
 
-| No | Challenge | Topik | Level | Status |
-|---|---|---|---|---|
-| 01 | [Vault Invariant Hunter](./ug-challenge-1/) | Stateless & stateful fuzzing, invariant, handler, reentrancy | Beginner → Intermediate | ✅ Tersedia |
+Kerjakan **berurutan**. Setiap challenge mengandalkan skill dari challenge sebelumnya.
 
-Challenge berikutnya akan menyusul.
+| No | Challenge | Section Cyfrin Updraft | Topik | Level | Status |
+|---|---|---|---|---|---|
+| 01 | [Vault Invariant Hunter](./ug-challenge-1/) | Review | Stateless & stateful fuzzing, invariant, handler, analisis CEI | Beginner → Intermediate | ✅ Tersedia |
+| 02 | [Secret Keeper](./ug-challenge-2/) | Your First Audit (PasswordStore) | Access control, data `private` di storage, menulis finding & severity | Beginner | ✅ Tersedia |
+| 03 | [Lucky Draw I](./ug-challenge-3/) | Puppy Raffle | Reentrancy, mishandling ETH (`selfdestruct`) | Intermediate | ✅ Tersedia |
+| 04 | [Lucky Draw II](./ug-challenge-4/) | Puppy Raffle | DoS, weak randomness, unsafe casting, Slither & Aderyn | Intermediate | ✅ Tersedia |
+| 05 | [Mini AMM](./ug-challenge-5/) | TSwap | AMM `x * y = k`, invariant break, slippage, deadline | Intermediate | ✅ Tersedia |
+| 06 | [Flash Lender](./ug-challenge-6/) | Thunder Loan | Flash loan, deposit-instead-of-repay, oracle manipulation | Intermediate → Advanced | ✅ Tersedia |
+| 07 | [Upgrade Trap](./ug-challenge-7/) | Thunder Loan | Proxy, storage collision, failure to initialize, sentralisasi | Advanced | ✅ Tersedia |
+| 08 | [Mini Bridge](./ug-challenge-8/) | Boss Bridge | Arbitrary `from`, signature replay, EIP-712 | Advanced | ✅ Tersedia |
+| 09 | [Lanjut Belajar](./ug-challenge-9/) | — | Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan langkah berikutnya | — | 📚 Bacaan |
 
 ---
 
 ## ⚠️ Aturan Utama — Wajib Dibaca
 
-### 1. AI hanya boleh dipakai seperti Google, bukan sebagai programmer kamu
+### 1. Tonton Cyfrin Updraft dulu
+
+Setiap README challenge memiliki bagian **Part 0 — Wajib Tonton Cyfrin Updraft** berisi daftar lesson yang harus kamu tonton **sebelum** mengerjakan. Jangan dilewati. Tanpa konteks dari materi, kamu akan tersesat dan tergoda menyuruh AI mengerjakannya.
+
+### 2. AI hanya boleh dipakai seperti Google, bukan sebagai programmer kamu
 
 Kita belajar **menulis** smart contract dan test, bukan belajar **mem-prompt** smart contract. Auditor yang tidak bisa membaca dan menulis kode sendiri tidak akan bisa menemukan bug yang tidak diketahui AI.
 
@@ -33,126 +54,196 @@ Kita belajar **menulis** smart contract dan test, bukan belajar **mem-prompt** s
 | "Apa fungsi `vm.prank` di Foundry?" | "Buatkan fuzz test untuk fungsi deposit ini." |
 | "Apa beda `bound()` dan `vm.assume()`?" | "Tulis handler invariant untuk SimpleVault." |
 | "Apa itu pola Checks-Effects-Interactions?" | "Apa bug di kontrak ini?" (sambil menempel kode challenge) |
-| "Arti error `Linearization of inheritance graph impossible`?" | "Perbaiki test saya sampai hijau." |
+| "Arti error `Linearization of inheritance graph impossible`?" | "Perbaiki test saya sampai `check.sh` hijau." |
 | "Tunjukkan link dokumentasi invariant testing di Foundry Book." | "Tuliskan laporan finding untuk bug ini." |
 | "Jelaskan arti output `-vvvv` ini baris per baris." | Menyalin jawaban AI ke `ANSWERS.md` atau `FINDINGS.md`. |
 
 **Aturan praktis:** kalau pertanyaanmu tetap masuk akal tanpa menempelkan kode challenge, kemungkinan besar pertanyaan itu boleh. Kalau kamu menempelkan kode challenge lalu meminta solusi, itu dilarang.
 
-### 2. Setiap baris harus bisa kamu jelaskan
+### 3. Setiap baris harus bisa kamu jelaskan
 
-- Setiap assertion, `bound()`, `vm.prank()`, dan keputusan desain di test kamu harus disertai alasan di `ANSWERS.md`, **ditulis dengan kata-katamu sendiri**.
-- Kode yang tidak bisa kamu jelaskan **dianggap tidak valid**, walaupun test-nya hijau.
-
-### 3. Siap untuk defense (tanya jawab)
-
-Mentor dapat sewaktu-waktu memintamu menjelaskan kode secara langsung, baik saat praktikum, lewat voice note, maupun di komentar PR. Contoh pertanyaan:
-
-- "Kenapa kamu pakai `bound` dan bukan `vm.assume` di sini?"
-- "Apa yang terjadi kalau baris ini dihapus?"
-- "Tunjukkan di trace bagian mana invariant-nya dilanggar."
-
-Kalau kamu menulis sendiri kodenya, pertanyaan seperti ini mudah dijawab. Kalau kamu menyalin, akan terlihat.
+- Tulis alasan setiap assertion, `bound()`, `vm.prank()`, dan keputusan desain test di `ANSWERS.md`, **dengan kata-katamu sendiri**.
+- Saat praktikum, mentor dapat memintamu menjelaskan kode secara langsung. Contoh: *"Kenapa pakai `bound` di sini?"*, *"Apa yang terjadi kalau baris ini dihapus?"*, *"Tunjukkan di trace bagian mana invariant-nya dilanggar."*
+- `check.sh` semua ✅ tetapi tidak bisa menjelaskan = **belum lulus**.
 
 ### 4. Kejujuran akademik
 
-- **Dilarang menyalin** submission peserta lain (termasuk dari PR yang terbuka). Membaca untuk belajar setelah PR-mu sendiri di-approve diperbolehkan.
-- Cantumkan sumber (artikel, video, dokumentasi) yang kamu pakai di bagian **Referensi** pada `ANSWERS.md`.
-- Catat dengan jujur hint mana saja yang kamu buka. Membuka hint **tidak mengurangi nilai**, tetapi tidak jujur soal hint justru mengurangi.
+- Jangan menyalin pekerjaan peserta lain.
+- Jangan men-decode `.check-data` (berisi kontrak pembanding) sebelum selesai. Itu sama saja dengan menyontek diri sendiri.
+- Cantumkan sumber (artikel, video, dokumentasi) di bagian **Referensi** pada `ANSWERS.md`.
+- Catat dengan jujur hint mana saja yang kamu buka. Membuka hint itu wajar.
 
 ---
 
-## 🛠️ Persiapan
+## 🛠️ Instalasi (cukup sekali)
 
-### 1. Install tools
+Ikuti langkah di bawah **berurutan**. Setiap langkah punya bagian **"Berhasil kalau…"** supaya kamu tahu apakah langkah itu sudah benar sebelum lanjut.
 
-| Tool | Cek versi | Cara install |
-|---|---|---|
-| Git | `git --version` | <https://git-scm.com/downloads> |
-| Foundry | `forge --version` | <https://getfoundry.sh/introduction/installation> |
-| VS Code + extension Solidity (opsional) | — | <https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity> |
+### Langkah 1 — Siapkan terminal
 
-Install Foundry:
+| OS | Yang dipakai |
+|---|---|
+| **macOS** | Aplikasi **Terminal** (cari "Terminal" di Spotlight). |
+| **Linux** | Terminal bawaan. |
+| **Windows** | **WSL (Ubuntu)**. Script `check.sh` dan Foundry berjalan paling lancar di WSL. |
+
+**Khusus Windows:** buka **PowerShell sebagai Administrator**, lalu jalankan:
+
+```powershell
+wsl --install
+```
+
+Restart laptop, lalu buka aplikasi **Ubuntu** dari Start Menu dan buat username/password Linux. **Semua perintah berikutnya dijalankan di terminal Ubuntu ini**, bukan di PowerShell.
+
+### Langkah 2 — Install Git dan curl
+
+| OS | Perintah |
+|---|---|
+| macOS | `xcode-select --install` (kalau Git belum ada, akan muncul jendela instalasi) |
+| Linux / WSL | `sudo apt update && sudo apt install -y git curl` |
+
+**Berhasil kalau** `git --version` menampilkan versi, misalnya `git version 2.43.0`.
+
+### Langkah 3 — Install Foundry
 
 ```bash
 curl -L https://foundry.paradigm.xyz | bash
+```
+
+**Tutup terminal, lalu buka terminal baru** (supaya perintah `foundryup` dikenali), kemudian jalankan:
+
+```bash
 foundryup
 ```
 
-### 2. Fork dan clone
+**Berhasil kalau** `forge --version` menampilkan sesuatu seperti:
 
-1. Klik tombol **Fork** di kanan atas halaman GitHub repo ini.
-2. Clone fork milikmu. **Jangan lupa `--recurse-submodules`**, karena `forge-std` dipasang sebagai submodule:
+```text
+forge Version: 1.x.x-stable
+```
+
+Dokumentasi resmi: <https://getfoundry.sh/introduction/installation>
+
+### Langkah 4 — Clone repo ini
 
 ```bash
-git clone --recurse-submodules https://github.com/<username-kamu>/challenge-ug-blockchain.git
+git clone --recurse-submodules --shallow-submodules https://github.com/BCC-UKDW-org/challenge-ug-blockchain.git
 cd challenge-ug-blockchain
 ```
 
-Kalau sudah terlanjur clone tanpa flag tersebut:
+- `--recurse-submodules` **wajib**, karena library `forge-std` ikut diunduh lewat submodule.
+- `--shallow-submodules` membuat unduhan lebih ringan (total ±15 MB).
+
+Kalau sudah terlanjur clone tanpa flag tersebut, jalankan dari folder repo:
 
 ```bash
-git submodule update --init --recursive
+git submodule update --init --recursive --depth 1
 ```
 
-3. Pastikan semuanya berjalan:
+> Mau menyimpan progres di GitHub milikmu sendiri? Fork repo ini lalu clone fork-mu. Ini opsional.
+
+### Langkah 5 — Uji coba pertama
 
 ```bash
 cd ug-challenge-1
 forge build
 ```
 
-Kalau muncul `Compiler run successful!`, kamu siap mulai.
+**Berhasil kalau** muncul `Compiler run successful!`. Saat pertama kali, Foundry akan mengunduh compiler Solidity (±10 MB), jadi tunggu sebentar.
+
+```bash
+forge test
+```
+
+**Normal kalau** muncul `No tests found in project!`, karena kamu belum menulis test.
+
+```bash
+./check.sh
+```
+
+**Normal kalau** semua ❌ dengan pesan "Fungsi ... tidak ditemukan", karena test-mu belum ada. Yang penting script-nya berjalan tanpa error.
+
+### Langkah 6 — Buka di VS Code (disarankan)
+
+```bash
+code .
+```
+
+Pasang extension [Solidity (Juan Blanco)](https://marketplace.visualstudio.com/items?itemName=JuanBlanco.solidity) atau [Solidity (Nomic Foundation)](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity) untuk syntax highlight. Pengguna Windows: pasang juga extension **WSL** supaya VS Code membuka folder di dalam Ubuntu.
+
+✅ **Instalasi selesai.** Kamu tidak perlu mengulang langkah 1–6 untuk challenge berikutnya.
 
 ---
 
-## 🔁 Alur Pengerjaan & Submit
+## 🧪 Cara Mengerjakan & Menguji
 
-Setiap challenge dikerjakan **bertahap per part** (A → B → C → D). Setiap part = **satu Pull Request**. Kamu baru boleh lanjut ke part berikutnya setelah PR sebelumnya **di-approve** mentor.
+### Pemanasan: test pertamamu
+
+Sebelum mengerjakan soal, pastikan kamu bisa menulis dan menjalankan satu test. Buka `ug-challenge-1/test/SimpleVault.t.sol`, lalu tambahkan fungsi ini di bawah komentar `// TULIS TEST KAMU DI SINI`:
+
+```solidity
+function test_Pemanasan() public view {
+    assertEq(vault.totalDeposits(), 0);
+}
+```
+
+Jalankan:
+
+```bash
+forge test --match-test test_Pemanasan -vvv
+```
+
+**Berhasil kalau** muncul:
 
 ```text
- Belajar materi  ─►  Kerjakan Part A  ─►  PR [A]  ─►  Review mentor  ─►  Approved?
-                                                          ▲               │
-                                                          └── revisi ◄── tidak
-                                                                          │ ya
-                                                                          ▼
-                                                                  Lanjut Part B ...
+[PASS] test_Pemanasan() (gas: ...)
 ```
 
-### Langkah per part
+Coba ganti `0` menjadi `1`, jalankan lagi, dan lihat seperti apa test yang **gagal** (`[FAIL]`). Setelah itu kembalikan ke `0` atau hapus fungsinya.
 
-**1. Siapkan folder kerjamu** (hanya sekali per challenge):
+### Alur setiap challenge
 
-```bash
-cd ug-challenge-1
-cp -r submissions/_template submissions/<username-github>
+```text
+ Tonton Updraft (Part 0)  ─►  Tulis test di test/  ─►  forge test  ─►  ./check.sh A  ─►  Semua ✅?
+                                      ▲                                                  │
+                                      └───────────────── perbaiki ◄──────── tidak ───────┤
+                                                                                         │ ya
+                                                                                         ▼
+                                                                              Lanjut Part B ...
 ```
 
-Semua pekerjaanmu ditulis **hanya** di dalam `submissions/<username-github>/`. Jangan mengubah file di `src/` atau di folder milik orang lain.
+1. **Tonton materi Part 0** yang tercantum di README challenge.
+2. **Tulis test di folder `test/`.** File kerangka sudah tersedia. Kamu boleh menambah file baru di folder yang sama. **Jangan mengubah `src/`.**
+3. **Jalankan test-mu** dengan `forge test` sampai perilakunya sesuai yang kamu harapkan.
+4. **Cek jawaban** dengan `./check.sh <PART>`. Part mana saja yang dicek otomatis tercantum di README challenge. Part tanpa cek otomatis (misalnya recon atau laporan) cukup dikerjakan di `ANSWERS.md` / `FINDINGS.md`.
+5. **Tulis penjelasan** di `ANSWERS.md` dan laporan bug di `FINDINGS.md`.
+6. **Semua ✅ dan penjelasan lengkap?** Lanjut ke part berikutnya.
 
-**2. Buat branch untuk part yang dikerjakan:**
+### Perintah yang sering dipakai
 
-```bash
-git checkout main
-git pull upstream main          # sinkronkan dengan repo utama (lihat catatan di bawah)
-git checkout -b ug1-<username>-part-a
-```
+Jalankan dari dalam folder challenge, misalnya `cd ug-challenge-1`.
 
-**3. Kerjakan, lalu jalankan test hanya untuk folder kamu:**
+| Perintah | Kegunaan |
+|---|---|
+| `forge build` | Compile kontrak dan test. Jalankan kalau ragu kodenya sudah benar secara sintaks. |
+| `forge test` | Menjalankan semua test. |
+| `forge test --match-test NAMA -vvv` | Menjalankan satu test saja, dengan detail kalau gagal. |
+| `forge test -vvvv` | Menampilkan **trace** lengkap: urutan panggilan fungsi dan alasan revert. |
+| `./check.sh` | Mengecek semua part yang bisa dicek otomatis. |
+| `./check.sh A` | Mengecek Part A saja (ganti `A` dengan part yang sedang dikerjakan). |
 
-```bash
-forge test --match-path "submissions/<username-github>/*" -vvv
-```
+### Membaca hasil `forge test`
 
-**4. Cek mandiri: apakah test-mu sudah benar?**
+| Output | Artinya |
+|---|---|
+| `[PASS] nama_test()` | Semua assertion di test itu terpenuhi. |
+| `[FAIL: assertion failed: 5 != 10] nama_test()` | Assertion gagal. Nilai kiri adalah hasil sebenarnya, nilai kanan adalah yang kamu harapkan. |
+| `[FAIL: <pesan revert>] nama_test()` | Ada transaksi yang revert. Tambahkan `-vvvv` untuk melihat di baris mana. |
+| `counterexample: calldata=... args=[...]` | Fuzzer menemukan input yang membuat test gagal. `args` adalah input tersebut. |
 
-Setiap challenge punya script `check.sh` yang sudah berisi test case untuk mengecek pekerjaanmu:
+### Membaca hasil `./check.sh`
 
-```bash
-./check.sh <username-github> A      # ganti A dengan part yang sedang dikerjakan
-```
-
-Script ini menjalankan test-mu terhadap kontrak asli, versi yang sudah diperbaiki, dan beberapa versi yang **sengaja dirusak**. Test yang benar harus lulus di versi yang benar dan gagal di versi yang rusak. Artinya, **test hijau saja tidak cukup**: test-mu juga harus bisa menangkap bug.
+`check.sh` menjalankan test-mu terhadap **kontrak asli**, versi yang **sudah diperbaiki**, dan versi yang **sengaja dirusak**. Test yang benar harus lulus di versi yang benar dan gagal di versi yang rusak. Artinya, **test hijau saja tidak cukup**: test-mu juga harus bisa menangkap bug.
 
 ```text
 ── Part A: testFuzz_Deposit
@@ -163,40 +254,57 @@ Script ini menjalankan test-mu terhadap kontrak asli, versi yang sudah diperbaik
 Hasil: 2 lulus, 1 gagal.
 ```
 
-Perbaiki sampai semua ✅ sebelum membuka PR. Nama fungsi test yang wajib dipakai tercantum di README masing-masing challenge.
+| Tanda | Artinya |
+|---|---|
+| ✅ | Bagian ini sudah benar. |
+| ❌ "tidak ditemukan" | Nama fungsi test belum ada atau salah ketik. Cek tabel **nama test wajib** di README challenge. |
+| ❌ lainnya | Test-mu ada, tetapi belum menguji hal yang benar. Baca pesannya, lalu buka hint di README challenge. |
+| ℹ️ | Informasi saja, tidak memengaruhi hasil. |
 
-> `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` tetap dinilai manual oleh mentor. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
+> `check.sh` mengompilasi kontrak beberapa kali, jadi wajar kalau butuh 10–60 detik.
 
-**5. Commit dan push:**
+---
 
-```bash
-git add submissions/<username-github>
-git commit -m "ug-challenge-1: part A - <username>"
-git push origin ug1-<username>-part-a
-```
+## 🧰 Tools yang Membantu Audit
 
-**6. Buka Pull Request** ke repo utama dengan judul:
+Tidak wajib dipasang semuanya. Mulailah dari yang dipakai di challenge, lalu tambah seiring kebutuhan.
 
-```text
-[UG-1][Part A] <username-github>
-```
+### Analisis & testing
 
-Isi deskripsi PR mengikuti template yang otomatis muncul (output `check.sh`, penjelasan, dan hint yang dibuka).
+| Tool | Kegunaan | Dipakai di |
+|---|---|---|
+| [Foundry](https://getfoundry.sh/) (`forge`, [`cast`](https://getfoundry.sh/cast/overview), [`chisel`](https://getfoundry.sh/chisel/overview)) | Compile, test, fuzz, invariant; `cast` untuk membaca storage/memanggil kontrak; `chisel` untuk mencoba Solidity secara interaktif | Semua challenge |
+| [Slither](https://github.com/crytic/slither) | Static analysis: mendeteksi pola bug umum secara otomatis | UG-4 dan seterusnya |
+| [Aderyn](https://github.com/Cyfrin/aderyn) | Static analysis buatan Cyfrin, menghasilkan laporan markdown | UG-4 dan seterusnya |
+| [Solidity Visual Developer](https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor) | Extension VS Code: highlight state variable, call graph, anotasi audit | Semua challenge |
+| [cloc](https://github.com/AlDanial/cloc) | Menghitung jumlah baris kode untuk scoping audit | Semua challenge |
+| [Echidna](https://github.com/crytic/echidna) / [Medusa](https://github.com/crytic/medusa) | Fuzzer alternatif selain Foundry | Lanjutan |
+| [Halmos](https://github.com/a16z/halmos) | Symbolic testing / formal verification dengan sintaks Foundry | Lanjutan |
 
-**7. Tunggu review.** Balas komentar mentor, perbaiki dengan menambah commit di branch yang sama, lalu tunggu label **approved**. Setelah PR di-merge, ulangi dari langkah 2 untuk part berikutnya.
+### Utilitas sehari-hari
 
-> **Catatan `upstream`:** tambahkan repo utama sebagai remote satu kali saja:
-> `git remote add upstream https://github.com/<pemilik-repo>/challenge-ug-blockchain.git`
+| Tool | Kegunaan |
+|---|---|
+| [Ethereum Unit Converter](https://eth-converter.com/) | Konversi wei ↔ gwei ↔ ether |
+| [EthSum](https://ethsum.netlify.app/) | Checksum alamat Ethereum |
+| [Swiss-Knife Calldata Decoder](https://calldata.swiss-knife.xyz/decoder) | Decode calldata transaksi menjadi fungsi dan argumen ([semua tools Swiss-Knife](https://swiss-knife.xyz/)) |
+| [4byte Directory](https://www.4byte.directory/) | Mencari nama fungsi dari function selector |
+| [evm.codes](https://www.evm.codes/) | Referensi opcode EVM beserta biaya gas |
+| [JSON Crack](https://jsoncrack.com/editor) | Visualisasi JSON (ABI, output `forge inspect`, trace) |
+| [Etherscan](https://etherscan.io/) | Membaca kontrak, transaksi, dan storage di mainnet |
+| [Tenderly](https://tenderly.co/) | Simulasi dan debugging transaksi |
+| [Synpress](https://docs.synpress.io/) | E2E testing dApp dengan MetaMask (untuk frontend web3) |
 
-### Apa yang dinilai?
+### Peta belajar
 
-Yang dinilai bukan hanya test yang hijau, tetapi juga:
+- [Ethereum-Jakarta/fullstack-web3-roadmap](https://github.com/Ethereum-Jakarta/fullstack-web3-roadmap): roadmap belajar fullstack web3 dari komunitas Indonesia.
+- [Cyfrin Updraft — Smart Contract Security](https://updraft.cyfrin.io/courses/security) beserta [repo course-nya](https://github.com/Cyfrin/security-and-auditing-full-course-s23).
 
-1. **Pemahaman:** penjelasan di `ANSWERS.md` menunjukkan kamu tahu *mengapa*, bukan hanya *apa*.
-2. **Ketepatan:** assertion dan invariant benar-benar menguji hal yang penting.
-3. **Kemampuan investigasi:** kamu bisa membaca trace dan call sequence ketika test gagal.
-4. **Kualitas laporan:** finding ditulis jelas, ada dampak, PoC, dan rekomendasi.
-5. **Kejujuran:** sumber dan hint dicatat apa adanya.
+---
+
+## 📚 Lanjut Belajar Setelah Repo Ini
+
+Sudah menyelesaikan UG-1 sampai UG-8? Lanjutkan ke [**09 — Lanjut Belajar**](./ug-challenge-9/): Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan jalur menuju audit kompetitif.
 
 ---
 
@@ -204,18 +312,22 @@ Yang dinilai bukan hanya test yang hijau, tetapi juga:
 
 ```text
 challenge-ug-blockchain/
-├── README.md                   ← kamu di sini (aturan & tata cara)
-├── .github/
-│   └── pull_request_template.md
-└── ug-challenge-1/             ← satu folder = satu challenge (proyek Foundry mandiri)
-    ├── README.md               ← soal dan materi challenge
+├── README.md               ← kamu di sini (aturan, alur, tools)
+├── bcc-ukdw/               ← aset logo
+├── scripts/
+│   ├── check-lib.sh        ← mesin cek yang dipakai semua check.sh
+│   └── variants.sh         ← khusus maintainer
+├── ug-challenge-9/         ← Lanjut Belajar (hanya README)
+└── ug-challenge-N/         ← UG-1 s.d. UG-8: satu folder = satu challenge (proyek Foundry mandiri)
+    ├── README.md           ← soal, materi wajib, hint
+    ├── src/                ← kontrak yang diaudit (JANGAN diubah)
+    ├── test/               ← tulis test-mu di sini
+    ├── ANSWERS.md          ← penjelasanmu
+    ├── FINDINGS.md         ← laporan bug
+    ├── check.sh            ← cek jawaban: ./check.sh [PART]
+    ├── .check-data         ← kontrak pembanding (base64)
     ├── foundry.toml
-    ├── check.sh                ← cek mandiri: ./check.sh <username> <part>
-    ├── src/                    ← kontrak yang diaudit (JANGAN diubah)
-    ├── lib/forge-std/          ← submodule
-    └── submissions/
-        ├── _template/          ← salin folder ini
-        └── <username>/         ← pekerjaanmu
+    └── lib/forge-std/      ← submodule
 ```
 
 ---
@@ -224,15 +336,21 @@ challenge-ug-blockchain/
 
 | Masalah | Solusi |
 |---|---|
-| `Source "forge-std/Test.sol" not found` | Submodule belum terunduh. Jalankan `git submodule update --init --recursive`. |
+| `Source "forge-std/Test.sol" not found` | Submodule belum terunduh. Jalankan `git submodule update --init --recursive --depth 1`. |
 | `forge: command not found` | Jalankan `foundryup`, lalu buka ulang terminal. |
-| Test orang lain ikut berjalan | Gunakan `--match-path "submissions/<username>/*"`. |
-| Test orang lain gagal dikompilasi sehingga punyamu ikut gagal | Sinkronkan `main` terbaru. Kalau masih gagal, laporkan ke mentor. |
-| `./check.sh: Permission denied` | Jalankan `chmod +x check.sh`, atau pakai `bash check.sh <username> A`. |
+| `./check.sh: Permission denied` | Jalankan `chmod +x check.sh`, atau pakai `bash check.sh A`. |
+| `foundryup: command not found` setelah install | Tutup terminal lalu buka terminal baru. Kalau masih gagal, jalankan `source ~/.bashrc` (Linux/WSL) atau `source ~/.zshenv` (macOS). |
+| `./check.sh` error `$'\r': command not found` atau `bad interpreter` di Windows | Repo di-clone dari PowerShell/Windows. Clone ulang **dari terminal Ubuntu (WSL)**. |
 | `check.sh` bilang "Fungsi ... tidak ditemukan" | Nama fungsi test harus sama persis dengan tabel di README challenge. |
-| `check.sh` di Windows | Jalankan lewat **Git Bash** atau **WSL**. |
-| Bingung harus mulai dari mana | Baca bagian **Part 0 — Belajar Dulu** di README challenge. |
+| `check.sh` bilang "gagal dikompilasi terhadap versi kontrak pembanding" | Test-mu memakai sesuatu yang bukan bagian publik kontrak. Pakai hanya fungsi publik yang ada di `src/`. |
+| `check.sh` di Windows | Jalankan dari terminal **Ubuntu (WSL)**. Lihat [Langkah 1](#langkah-1--siapkan-terminal). |
+| Bingung harus mulai dari mana | Tonton ulang materi di **Part 0** README challenge. |
 
 ---
+
+## 🙏 Kredit
+
+- Materi dan kurikulum: [Cyfrin Updraft](https://updraft.cyfrin.io/) oleh Patrick Collins dan tim Cyfrin.
+- Disusun untuk praktikum UG (Unguided), BCC UKDW — Duta Wacana Web3.
 
 Selamat berburu bug. 🐛🔍

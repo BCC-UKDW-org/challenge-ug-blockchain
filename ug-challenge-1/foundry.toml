@@ -1,12 +1,14 @@
 [profile.default]
 src = "src"
-test = "submissions"
+test = "test"
 out = "out"
 libs = ["lib"]
 remappings = ["forge-std/=lib/forge-std/src/"]
+solc_version = "0.8.30"
 
 [fuzz]
 runs = 256
+seed = "0x1"
 
 [invariant]
 runs = 256
