@@ -4,7 +4,7 @@
 
 # UG Blockchain Challenges
 
-Kumpulan challenge **audit smart contract** untuk praktikum **UG (Unguided)** di Universitas Kristen Duta Wacana, dan terbuka juga untuk publik.
+Kumpulan challenge **audit smart contract** **UG (Unguided)** dari **BCC UKDW — Duta Wacana Web3**, terbuka untuk mahasiswa maupun publik.
 
 Seluruh challenge di repo ini disusun berdasarkan materi **[Cyfrin Updraft — Smart Contract Security](https://updraft.cyfrin.io/courses/security)**. Setiap challenge memetakan satu section Updraft ke sebuah kontrak baru yang **orisinal**, sehingga kamu tidak bisa sekadar menyalin laporan audit yang sudah beredar.
 
@@ -65,7 +65,7 @@ Kita belajar **menulis** smart contract dan test, bukan belajar **mem-prompt** s
 ### 3. Setiap baris harus bisa kamu jelaskan
 
 - Tulis alasan setiap assertion, `bound()`, `vm.prank()`, dan keputusan desain test di `ANSWERS.md`, **dengan kata-katamu sendiri**.
-- Saat praktikum, mentor dapat memintamu menjelaskan kode secara langsung. Contoh: *"Kenapa pakai `bound` di sini?"*, *"Apa yang terjadi kalau baris ini dihapus?"*, *"Tunjukkan di trace bagian mana invariant-nya dilanggar."*
+- Tim BCC UKDW dapat memintamu menjelaskan kode secara langsung. Contoh: *"Kenapa pakai `bound` di sini?"*, *"Apa yang terjadi kalau baris ini dihapus?"*, *"Tunjukkan di trace bagian mana invariant-nya dilanggar."*
 - `check.sh` semua ✅ tetapi tidak bisa menjelaskan = **belum lulus**.
 
 ### 4. Kejujuran akademik
@@ -353,6 +353,6 @@ challenge-ug-blockchain/
 ## 🙏 Kredit
 
 - Materi dan kurikulum: [Cyfrin Updraft](https://updraft.cyfrin.io/) oleh Patrick Collins dan tim Cyfrin.
-- Disusun untuk praktikum UG (Unguided), BCC UKDW — Duta Wacana Web3.
+- Disusun oleh BCC UKDW — Duta Wacana Web3 sebagai challenge UG (Unguided).
 
 Selamat berburu bug. 🐛🔍

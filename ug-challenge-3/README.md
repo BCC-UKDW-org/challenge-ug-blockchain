@@ -133,7 +133,7 @@ Contoh output:
 |---|---|
 | B, C | diawali `test_PoC_`, contoh `test_PoC_NamaBugnya()`. Satu PoC per temuan. |
 
-> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan menjadi bahan tanya jawab saat praktikum. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
+> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan tim BCC UKDW bisa memintamu menjelaskannya kapan saja. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
 >
 > Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >

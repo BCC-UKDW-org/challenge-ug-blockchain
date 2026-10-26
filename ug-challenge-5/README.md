@@ -158,7 +158,7 @@ Contoh output:
 | B | `invariant_ConstantProduct()` |
 | C | diawali `test_PoC_`, satu PoC untuk setiap temuan, contoh `test_PoC_NamaBugnya()` |
 
-> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan menjadi bahan tanya jawab saat praktikum.
+> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan tim BCC UKDW bisa memintamu menjelaskannya kapan saja.
 >
 > Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >

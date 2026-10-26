@@ -32,7 +32,7 @@ Panduan ini untuk kamu yang **baru pertama kali** belajar web3 atau audit smart 
 
 3. **Pahami aturan main sebelum mulai.**
    - **AI hanya boleh dipakai seperti Google.** Boleh bertanya konsep atau mencari dokumentasi ("apa itu `vm.prank`?"). **Dilarang** meminta AI menuliskan test, mencari bug di kode challenge, atau menulis laporanmu.
-   - **Setiap baris kode harus bisa kamu jelaskan.** Saat praktikum, mentor bisa memintamu menjelaskannya.
+   - **Setiap baris kode harus bisa kamu jelaskan.** Tim BCC UKDW bisa memintamu menjelaskannya kapan saja.
    - **Jangan menyalin** pekerjaan teman, dan jangan membuka isi file `.check-data` (isinya kunci jawaban yang disamarkan).
 
    Aturan lengkapnya ada di [README — Aturan Utama](./README.md#️-aturan-utama--wajib-dibaca).
@@ -203,9 +203,9 @@ Ulangi langkah 14–23 untuk setiap challenge, mulai dari **UG-1**, lalu UG-2, d
     3. Tonton ulang video Updraft yang terkait dan baca dokumentasi di tabel "Dokumentasi pendamping".
     4. Buka **Hint 2** (konsep), lalu **Hint 3** (hampir jawaban) kalau masih buntu.
     5. Tanya **konsep** ke AI atau mesin pencari. Ingat aturannya: jangan tempel kode challenge dan jangan minta solusi.
-    6. Tanya mentor saat praktikum.
+    6. Diskusikan konsepnya dengan sesama peserta atau tim BCC UKDW, tanpa saling memberi jawaban.
 
-    Catat hint mana saja yang kamu buka di tabel **"Hint yang Dibuka"** di `ANSWERS.md`. Membuka hint itu wajar dan tidak mengurangi nilai.
+    Catat hint mana saja yang kamu buka di tabel **"Hint yang Dibuka"** di `ANSWERS.md`. Membuka hint itu wajar, yang penting kamu paham alasannya.
 
 22. **Tulis penjelasan dan laporanmu.**
     - Di `ANSWERS.md`: jawab setiap pertanyaan dengan **kata-katamu sendiri**, dan jelaskan alasan setiap assertion di test-mu.
@@ -246,7 +246,7 @@ Ulangi langkah 14–23 untuk setiap challenge, mulai dari **UG-1**, lalu UG-2, d
 | `check.sh`: "gagal dikompilasi terhadap versi kontrak pembanding" | Test-mu memakai sesuatu yang tidak ada di kontrak. Pakai hanya fungsi publik yang ada di `src/`. |
 | Test-ku hijau tapi `check.sh` ❌ | Test-mu belum menguji hal yang tepat. Baca pesan ❌, lalu buka hint. |
 
-Masalah lain? Lihat bagian **Troubleshooting** di [README utama](./README.md#-troubleshooting), atau tanyakan ke mentor.
+Masalah lain? Lihat bagian **Troubleshooting** di [README utama](./README.md#-troubleshooting), atau tanyakan ke tim BCC UKDW.
 
 ---
 

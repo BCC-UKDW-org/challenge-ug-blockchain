@@ -135,7 +135,7 @@ Supaya bisa dikenali `check.sh`, **nama test wajib** mengikuti aturan berikut:
 | B | `testFuzz_NonOwnerCannotSetSecret(address)` |
 | C | diawali `test_PoC_`, contoh `test_PoC_NamaBugnya()`. Boleh lebih dari satu. |
 
-> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan menjadi bahan tanya jawab saat praktikum. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
+> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` adalah bukti bahwa kamu paham, dan tim BCC UKDW bisa memintamu menjelaskannya kapan saja. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
 >
 > Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >
@@ -368,7 +368,7 @@ Pikirkan tujuan utama protokol ini. Apakah kedua temuan sama-sama merusak tujuan
 
 </details>
 
-> Part D tidak dicek oleh `check.sh`. Laporan yang jelas adalah keterampilan utama seorang auditor, dan akan dibahas saat praktikum.
+> Part D tidak dicek oleh `check.sh`. Laporan yang jelas adalah keterampilan utama seorang auditor.
 
 ---
 

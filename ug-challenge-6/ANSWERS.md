@@ -76,7 +76,7 @@ Temuan lengkap: lihat `FINDINGS.md`.
 
 ## Hint yang Dibuka
 
-Jujur saja, membuka hint tidak mengurangi nilai.
+Jujur saja. Membuka hint itu wajar, yang penting kamu paham alasannya.
 
 | Part | Hint 1 | Hint 2 | Hint 3 |
 |---|---|---|---|
