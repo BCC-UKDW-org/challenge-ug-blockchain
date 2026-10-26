@@ -14,6 +14,8 @@ Tujuannya melatih kamu **berpikir seperti security researcher**: membaca kode se
 
 ### 🚦 Mulai di sini
 
+> 🆕 **Baru pertama kali belajar web3?** Ikuti [**guidelines.md**](./guidelines.md): panduan langkah demi langkah dari nol sampai selesai, dengan bahasa yang ramah pemula.
+
 1. Baca [**Aturan Utama**](#️-aturan-utama--wajib-dibaca), terutama aturan penggunaan AI.
 2. Ikuti [**Instalasi**](#️-instalasi-cukup-sekali) langkah 1–6 (cukup sekali).
 3. Coba [**Pemanasan: test pertamamu**](#pemanasan-test-pertamamu) supaya terbiasa menulis dan menjalankan test.
