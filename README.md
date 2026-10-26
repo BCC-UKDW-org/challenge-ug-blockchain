@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://bccukdw.xyz"><img src="https://img.shields.io/badge/Website-bccukdw.xyz-1E4FD8?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website BCC UKDW" /></a>
+  <a href="https://www.instagram.com/dutawacana.web3/"><img src="https://img.shields.io/badge/Instagram-dutawacana.web3-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Duta Wacana Web3" /></a>
 </p>
 
 # UG Blockchain Challenges
