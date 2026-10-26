@@ -8,13 +8,13 @@
 
 - [ ] Semua perubahan **hanya** di `submissions/<username>/`
 - [ ] Tidak mengubah file di `src/`
-- [ ] `forge test --match-path "submissions/<username>/*"` sudah dijalankan
+- [ ] `./check.sh <username> <part>` sudah dijalankan dan semua ✅
 - [ ] `ANSWERS.md` sudah diisi untuk part ini dengan kata-kata sendiri
 - [ ] Hint yang dibuka sudah dicatat dengan jujur
 - [ ] Saya bisa menjelaskan setiap baris kode yang saya kirim (siap defense)
 - [ ] AI hanya saya pakai sebagai mesin pencari / dokumentasi, bukan untuk menulis kode atau jawaban
 
-## Output `forge test`
+## Output `check.sh`
 
 ```text
 (tempel di sini)

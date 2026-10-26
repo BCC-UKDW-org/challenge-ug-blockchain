@@ -109,6 +109,7 @@ ug-challenge-1/
 │   │   ├── ANSWERS.md            ← penjelasan & jawaban per part
 │   │   └── FINDINGS.md           ← laporan bug (Part D)
 │   └── <username-github>/        ← folder kerjamu
+├── check.sh                      ← cek mandiri (mutation testing)
 └── foundry.toml
 ```
 
@@ -119,6 +120,41 @@ forge test --match-path "submissions/<username-github>/*" -vvv
 ```
 
 > Kamu boleh menambah file baru di folder kerjamu, misalnya `Handler.sol` atau `Attacker.sol`.
+
+### ✔️ Cek mandiri dengan `check.sh`
+
+Kamu bisa mengecek sendiri apakah test-mu sudah benar, tanpa menunggu mentor:
+
+```bash
+./check.sh <username-github> A      # cek Part A saja
+./check.sh <username-github>        # cek semua part
+```
+
+**Cara kerjanya:** test milikmu dijalankan terhadap beberapa versi `SimpleVault`, yaitu versi asli, versi yang sudah diperbaiki, dan beberapa versi yang **sengaja dirusak** (*mutation testing*). Test yang baik harus **lulus** di versi yang benar dan **gagal** di versi yang rusak. Test yang tetap hijau padahal kontraknya dirusak berarti tidak menguji apa-apa.
+
+Contoh output:
+
+```text
+── Part A: testFuzz_Deposit
+   ✅ Lulus di kontrak asli (input nol & input besar sudah ditangani)
+   ✅ Mendeteksi deposit yang lupa menambah totalDeposits
+   ❌ Mendeteksi deposit yang mencatat saldo pengguna dengan salah
+```
+
+Supaya bisa dikenali `check.sh`, **nama test wajib** mengikuti aturan berikut:
+
+| Part | Nama fungsi |
+|---|---|
+| A | `testFuzz_Deposit(uint96)` |
+| B, C | `invariant_AccountingIsConsistent()` |
+| D1 | diawali `test_PoC_`, contoh `test_PoC_NamaBugnya()` |
+| D2 | diawali `test_Reentrancy`, contoh `test_ReentrancyAttack()` |
+
+> ⚠️ `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` tetap dinilai manual dan menjadi bahan defense. Semua ✅ tanpa bisa menjelaskan = belum lulus.
+>
+> Versi-versi kontrak di dalam `check.sh` disimpan dalam base64 supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
+>
+> Pengguna Windows: jalankan lewat **Git Bash** atau **WSL**.
 
 ---
 
@@ -233,6 +269,8 @@ Jepit `amount` ke rentang `[1, 100 ether]` dengan `bound`. Perhatikan bahwa `bou
 
 </details>
 
+**✔️ Cek mandiri:** `./check.sh <username> A`
+
 **📤 Submit:** PR `[UG-1][Part A] <username>` berisi test + `ANSWERS.md` bagian Tabel Fungsi & Part A.
 
 ---
@@ -300,6 +338,8 @@ Test invariant yang lulus belum tentu berarti kontraknya benar. Bisa jadi fuzzer
 Baca bagian *target contracts*, *target senders*, dan *handler-based testing* di [Foundry Book — Invariant Testing](https://getfoundry.sh/forge/invariant-testing). Perhatikan pula opsi `fail_on_revert` di `foundry.toml`.
 
 </details>
+
+**✔️ Cek mandiri:** `./check.sh <username> B`
 
 **📤 Submit:** PR `[UG-1][Part B] <username>` berisi rumusan invariant, test naif, dan analisismu terhadap hasilnya.
 
@@ -401,6 +441,8 @@ Di handler, `actor = actors[actorSeed % actors.length]`. Untuk deposit, `amount 
 
 **🌟 Bonus C — Ghost variables:** tambahkan variabel di handler seperti `ghost_totalDeposited` dan `ghost_totalWithdrawn` yang mencatat apa yang **seharusnya** terjadi. Tulis invariant yang membandingkan nilai ghost dengan state vault. Apa kelebihan pendekatan ini?
 
+**✔️ Cek mandiri:** `./check.sh <username> C`
+
 **📤 Submit:** PR `[UG-1][Part C] <username>` berisi handler, invariant, call sequence, dan analisisnya.
 
 ---
@@ -464,6 +506,8 @@ Untuk D2: baca pola Checks-Effects-Interactions di [Solidity Docs — Security C
 Kontrak `Attacker` cukup berisi: fungsi `attack()` yang melakukan deposit lalu withdraw, dan `receive()` yang memanggil `withdraw` lagi selama vault masih punya ETH. Di test, isi vault dengan deposit Bob, jalankan serangan, lalu bandingkan saldo sebelum dan sesudah. Perhatikan pesan revert yang muncul di trace `-vvvv`: dari `require` mana asalnya?
 
 </details>
+
+**✔️ Cek mandiri:** `./check.sh <username> D`
 
 **📤 Submit:** PR `[UG-1][Part D] <username>` berisi `FINDINGS.md`, test PoC, `Attacker`, dan jawaban D1–D3.
 

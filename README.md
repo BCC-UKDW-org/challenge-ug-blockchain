@@ -144,7 +144,30 @@ git checkout -b ug1-<username>-part-a
 forge test --match-path "submissions/<username-github>/*" -vvv
 ```
 
-**4. Commit dan push:**
+**4. Cek mandiri: apakah test-mu sudah benar?**
+
+Setiap challenge punya script `check.sh` yang sudah berisi test case untuk mengecek pekerjaanmu:
+
+```bash
+./check.sh <username-github> A      # ganti A dengan part yang sedang dikerjakan
+```
+
+Script ini menjalankan test-mu terhadap kontrak asli, versi yang sudah diperbaiki, dan beberapa versi yang **sengaja dirusak**. Test yang benar harus lulus di versi yang benar dan gagal di versi yang rusak. Artinya, **test hijau saja tidak cukup**: test-mu juga harus bisa menangkap bug.
+
+```text
+── Part A: testFuzz_Deposit
+   ✅ Lulus di kontrak asli (input nol & input besar sudah ditangani)
+   ✅ Mendeteksi deposit yang lupa menambah totalDeposits
+   ❌ Mendeteksi deposit yang mencatat saldo pengguna dengan salah
+
+Hasil: 2 lulus, 1 gagal.
+```
+
+Perbaiki sampai semua ✅ sebelum membuka PR. Nama fungsi test yang wajib dipakai tercantum di README masing-masing challenge.
+
+> `check.sh` hanya mengecek **kode**. Penjelasan di `ANSWERS.md` dan `FINDINGS.md` tetap dinilai manual oleh mentor. Semua ✅ tetapi tidak bisa menjelaskan = belum lulus.
+
+**5. Commit dan push:**
 
 ```bash
 git add submissions/<username-github>
@@ -152,15 +175,15 @@ git commit -m "ug-challenge-1: part A - <username>"
 git push origin ug1-<username>-part-a
 ```
 
-**5. Buka Pull Request** ke repo utama dengan judul:
+**6. Buka Pull Request** ke repo utama dengan judul:
 
 ```text
 [UG-1][Part A] <username-github>
 ```
 
-Isi deskripsi PR mengikuti template yang otomatis muncul (output `forge test`, penjelasan, dan hint yang dibuka).
+Isi deskripsi PR mengikuti template yang otomatis muncul (output `check.sh`, penjelasan, dan hint yang dibuka).
 
-**6. Tunggu review.** Balas komentar mentor, perbaiki dengan menambah commit di branch yang sama, lalu tunggu label **approved**. Setelah PR di-merge, ulangi dari langkah 2 untuk part berikutnya.
+**7. Tunggu review.** Balas komentar mentor, perbaiki dengan menambah commit di branch yang sama, lalu tunggu label **approved**. Setelah PR di-merge, ulangi dari langkah 2 untuk part berikutnya.
 
 > **Catatan `upstream`:** tambahkan repo utama sebagai remote satu kali saja:
 > `git remote add upstream https://github.com/<pemilik-repo>/challenge-ug-blockchain.git`
@@ -187,6 +210,7 @@ challenge-ug-blockchain/
 └── ug-challenge-1/             ← satu folder = satu challenge (proyek Foundry mandiri)
     ├── README.md               ← soal dan materi challenge
     ├── foundry.toml
+    ├── check.sh                ← cek mandiri: ./check.sh <username> <part>
     ├── src/                    ← kontrak yang diaudit (JANGAN diubah)
     ├── lib/forge-std/          ← submodule
     └── submissions/
@@ -204,6 +228,9 @@ challenge-ug-blockchain/
 | `forge: command not found` | Jalankan `foundryup`, lalu buka ulang terminal. |
 | Test orang lain ikut berjalan | Gunakan `--match-path "submissions/<username>/*"`. |
 | Test orang lain gagal dikompilasi sehingga punyamu ikut gagal | Sinkronkan `main` terbaru. Kalau masih gagal, laporkan ke mentor. |
+| `./check.sh: Permission denied` | Jalankan `chmod +x check.sh`, atau pakai `bash check.sh <username> A`. |
+| `check.sh` bilang "Fungsi ... tidak ditemukan" | Nama fungsi test harus sama persis dengan tabel di README challenge. |
+| `check.sh` di Windows | Jalankan lewat **Git Bash** atau **WSL**. |
 | Bingung harus mulai dari mana | Baca bagian **Part 0 — Belajar Dulu** di README challenge. |
 
 ---
