@@ -9,7 +9,7 @@
 | **Fokus** | Flash loan, akuntansi liquidity provider, manipulasi harga/oracle, menulis PoC dengan kontrak penyerang |
 | **Cek jawaban** | `./check.sh` (lihat [Cek mandiri](#️-cek-mandiri-dengan-checksh)) |
 
-> ⚠️ **Sebelum mulai, baca [Aturan Utama](../README.md#️-aturan-utama--wajib-dibaca).**
+> ⚠️ **Sebelum mulai, baca [Aturan Utama](../../README.md#️-aturan-utama--wajib-dibaca).**
 > AI hanya boleh dipakai seperti Google, yaitu untuk mencari dokumentasi dan konsep. **Kode, penjelasan, dan laporan harus kamu tulis sendiri.**
 
 ---
@@ -97,7 +97,7 @@ Jawab di kepalamu. Kalau ada lebih dari dua yang belum bisa kamu jawab, tonton u
 Proyek Foundry sudah disiapkan, jadi kamu **tidak perlu** menjalankan `forge init`.
 
 ```bash
-cd ug-challenge-6
+cd ug-challenge/ug-challenge-6   # dari folder utama repo
 forge build
 ```
 
@@ -163,7 +163,7 @@ Supaya bisa dikenali `check.sh`, **nama test wajib** mengikuti aturan berikut:
 >
 > Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >
-> Pengguna Windows: jalankan dari terminal **Ubuntu (WSL)**, lihat [panduan instalasi](../README.md#️-instalasi-cukup-sekali).
+> Pengguna Windows: jalankan dari terminal **Ubuntu (WSL)**, lihat [panduan instalasi](../../README.md#️-instalasi-cukup-sekali).
 
 ---
 

@@ -82,7 +82,7 @@ Panduan ini untuk kamu yang **baru pertama kali** belajar web3 atau audit smart 
 8. **Uji coba instalasi.** Masuk ke challenge pertama dan jalankan tiga perintah ini satu per satu:
 
    ```bash
-   cd ug-challenge-1
+   cd ug-challenge/ug-challenge-1
    forge build
    forge test
    ./check.sh
@@ -101,7 +101,7 @@ Panduan ini untuk kamu yang **baru pertama kali** belajar web3 atau audit smart 
 
 ## Bagian C — Pemanasan: Test Pertamamu
 
-10. **Kenali isi folder challenge.** Setiap folder `ug-challenge-N` berisi:
+10. **Kenali isi folder challenge.** Setiap folder `ug-challenge/ug-challenge-N` berisi:
 
     | Isi | Kegunaan | Boleh diubah? |
     |---|---|---|
@@ -112,7 +112,7 @@ Panduan ini untuk kamu yang **baru pertama kali** belajar web3 atau audit smart 
     | `FINDINGS.md` | Tempat menulis laporan bug. | Ya |
     | `check.sh` | Pemeriksa otomatis jawabanmu. | Tidak |
 
-11. **Tulis test pertamamu.** Buka `ug-challenge-1/test/SimpleVault.t.sol`, lalu tambahkan kode ini tepat di bawah tulisan `// TULIS TEST KAMU DI SINI`:
+11. **Tulis test pertamamu.** Buka `ug-challenge/ug-challenge-1/test/SimpleVault.t.sol`, lalu tambahkan kode ini tepat di bawah tulisan `// TULIS TEST KAMU DI SINI`:
 
     ```solidity
     function test_Pemanasan() public view {
@@ -147,8 +147,10 @@ Ulangi langkah 14–23 untuk setiap challenge, mulai dari **UG-1**, lalu UG-2, d
 14. **Masuk ke folder challenge dan buka README-nya.**
 
     ```bash
-    cd ug-challenge-1      # ganti angkanya sesuai challenge
+    cd ug-challenge/ug-challenge-1      # dari folder utama repo; ganti angkanya sesuai challenge
     ```
+
+    Kalau kamu sedang berada di folder challenge lain, pindah dengan `cd ../ug-challenge-2` (ganti angkanya).
 
     Baca bagian **🎯 Misi Kamu** supaya tahu cerita protokolnya dan klaim developer yang harus kamu uji.
 
@@ -230,7 +232,7 @@ Ulangi langkah 14–23 untuk setiap challenge, mulai dari **UG-1**, lalu UG-2, d
     git push
     ```
 
-25. **Lanjutkan belajar.** Setelah UG-8 selesai, buka [**09 — Lanjut Belajar**](./ug-challenge-9/). Di sana ada langkah berikutnya: Damn Vulnerable DeFi, Solodit, CodeHawks First Flights, sampai audit kompetitif sungguhan.
+25. **Lanjutkan belajar.** Setelah UG-8 selesai, buka [**09 — Lanjut Belajar**](./ug-challenge/ug-challenge-9/). Di sana ada langkah berikutnya: Damn Vulnerable DeFi, Solodit, CodeHawks First Flights, sampai audit kompetitif sungguhan.
 
 ---
 

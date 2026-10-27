@@ -24,7 +24,7 @@ Tujuannya melatih kamu **berpikir seperti security researcher**: membaca kode se
 1. Baca [**Aturan Utama**](#️-aturan-utama--wajib-dibaca), terutama aturan penggunaan AI.
 2. Ikuti [**Instalasi**](#️-instalasi-cukup-sekali) langkah 1–6 (cukup sekali).
 3. Coba [**Pemanasan: test pertamamu**](#pemanasan-test-pertamamu) supaya terbiasa menulis dan menjalankan test.
-4. Buka [**Challenge 01**](./ug-challenge-1/) dan kerjakan berurutan sampai Challenge 08.
+4. Buka [**Challenge 01**](./ug-challenge/ug-challenge-1/) dan kerjakan berurutan sampai Challenge 08.
 
 ---
 
@@ -34,15 +34,15 @@ Kerjakan **berurutan**. Setiap challenge mengandalkan skill dari challenge sebel
 
 | No | Challenge | Section Cyfrin Updraft | Topik | Level | Status |
 |---|---|---|---|---|---|
-| 01 | [Vault Invariant Hunter](./ug-challenge-1/) | Review | Stateless & stateful fuzzing, invariant, handler, analisis CEI | Beginner → Intermediate | ✅ Tersedia |
-| 02 | [Secret Keeper](./ug-challenge-2/) | Your First Audit (PasswordStore) | Access control, data `private` di storage, menulis finding & severity | Beginner | ✅ Tersedia |
-| 03 | [Lucky Draw I](./ug-challenge-3/) | Puppy Raffle | Reentrancy, mishandling ETH (`selfdestruct`) | Intermediate | ✅ Tersedia |
-| 04 | [Lucky Draw II](./ug-challenge-4/) | Puppy Raffle | DoS, weak randomness, unsafe casting, Slither & Aderyn | Intermediate | ✅ Tersedia |
-| 05 | [Mini AMM](./ug-challenge-5/) | TSwap | AMM `x * y = k`, invariant break, slippage, deadline | Intermediate | ✅ Tersedia |
-| 06 | [Flash Lender](./ug-challenge-6/) | Thunder Loan | Flash loan, deposit-instead-of-repay, oracle manipulation | Intermediate → Advanced | ✅ Tersedia |
-| 07 | [Upgrade Trap](./ug-challenge-7/) | Thunder Loan | Proxy, storage collision, failure to initialize, sentralisasi | Advanced | ✅ Tersedia |
-| 08 | [Mini Bridge](./ug-challenge-8/) | Boss Bridge | Arbitrary `from`, signature replay, EIP-712 | Advanced | ✅ Tersedia |
-| 09 | [Lanjut Belajar](./ug-challenge-9/) | — | Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan langkah berikutnya | — | 📚 Bacaan |
+| 01 | [Vault Invariant Hunter](./ug-challenge/ug-challenge-1/) | Review | Stateless & stateful fuzzing, invariant, handler, analisis CEI | Beginner → Intermediate | ✅ Tersedia |
+| 02 | [Secret Keeper](./ug-challenge/ug-challenge-2/) | Your First Audit (PasswordStore) | Access control, data `private` di storage, menulis finding & severity | Beginner | ✅ Tersedia |
+| 03 | [Lucky Draw I](./ug-challenge/ug-challenge-3/) | Puppy Raffle | Reentrancy, mishandling ETH (`selfdestruct`) | Intermediate | ✅ Tersedia |
+| 04 | [Lucky Draw II](./ug-challenge/ug-challenge-4/) | Puppy Raffle | DoS, weak randomness, unsafe casting, Slither & Aderyn | Intermediate | ✅ Tersedia |
+| 05 | [Mini AMM](./ug-challenge/ug-challenge-5/) | TSwap | AMM `x * y = k`, invariant break, slippage, deadline | Intermediate | ✅ Tersedia |
+| 06 | [Flash Lender](./ug-challenge/ug-challenge-6/) | Thunder Loan | Flash loan, deposit-instead-of-repay, oracle manipulation | Intermediate → Advanced | ✅ Tersedia |
+| 07 | [Upgrade Trap](./ug-challenge/ug-challenge-7/) | Thunder Loan | Proxy, storage collision, failure to initialize, sentralisasi | Advanced | ✅ Tersedia |
+| 08 | [Mini Bridge](./ug-challenge/ug-challenge-8/) | Boss Bridge | Arbitrary `from`, signature replay, EIP-712 | Advanced | ✅ Tersedia |
+| 09 | [Lanjut Belajar](./ug-challenge/ug-challenge-9/) | — | Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan langkah berikutnya | — | 📚 Bacaan |
 
 ---
 
@@ -152,7 +152,7 @@ git submodule update --init --recursive --depth 1
 ### Langkah 5 — Uji coba pertama
 
 ```bash
-cd ug-challenge-1
+cd ug-challenge/ug-challenge-1
 forge build
 ```
 
@@ -186,7 +186,7 @@ Pasang extension [Solidity (Juan Blanco)](https://marketplace.visualstudio.com/i
 
 ### Pemanasan: test pertamamu
 
-Sebelum mengerjakan soal, pastikan kamu bisa menulis dan menjalankan satu test. Buka `ug-challenge-1/test/SimpleVault.t.sol`, lalu tambahkan fungsi ini di bawah komentar `// TULIS TEST KAMU DI SINI`:
+Sebelum mengerjakan soal, pastikan kamu bisa menulis dan menjalankan satu test. Buka `ug-challenge/ug-challenge-1/test/SimpleVault.t.sol`, lalu tambahkan fungsi ini di bawah komentar `// TULIS TEST KAMU DI SINI`:
 
 ```solidity
 function test_Pemanasan() public view {
@@ -228,7 +228,7 @@ Coba ganti `0` menjadi `1`, jalankan lagi, dan lihat seperti apa test yang **gag
 
 ### Perintah yang sering dipakai
 
-Jalankan dari dalam folder challenge, misalnya `cd ug-challenge-1`.
+Jalankan dari dalam folder challenge, misalnya `cd ug-challenge/ug-challenge-1`.
 
 | Perintah | Kegunaan |
 |---|---|
@@ -311,7 +311,7 @@ Tidak wajib dipasang semuanya. Mulailah dari yang dipakai di challenge, lalu tam
 
 ## 📚 Lanjut Belajar Setelah Repo Ini
 
-Sudah menyelesaikan UG-1 sampai UG-8? Lanjutkan ke [**09 — Lanjut Belajar**](./ug-challenge-9/): Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan jalur menuju audit kompetitif.
+Sudah menyelesaikan UG-1 sampai UG-8? Lanjutkan ke [**09 — Lanjut Belajar**](./ug-challenge/ug-challenge-9/): Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan jalur menuju audit kompetitif.
 
 ---
 
@@ -319,22 +319,24 @@ Sudah menyelesaikan UG-1 sampai UG-8? Lanjutkan ke [**09 — Lanjut Belajar**](.
 
 ```text
 challenge-ug-blockchain/
-├── README.md               ← kamu di sini (aturan, alur, tools)
-├── bcc-ukdw/               ← aset logo
-├── scripts/
-│   ├── check-lib.sh        ← mesin cek yang dipakai semua check.sh
-│   └── variants.sh         ← khusus maintainer
-├── ug-challenge-9/         ← Lanjut Belajar (hanya README)
-└── ug-challenge-N/         ← UG-1 s.d. UG-8: satu folder = satu challenge (proyek Foundry mandiri)
-    ├── README.md           ← soal, materi wajib, hint
-    ├── src/                ← kontrak yang diaudit (JANGAN diubah)
-    ├── test/               ← tulis test-mu di sini
-    ├── ANSWERS.md          ← penjelasanmu
-    ├── FINDINGS.md         ← laporan bug
-    ├── check.sh            ← cek jawaban: ./check.sh [PART]
-    ├── .check-data         ← kontrak pembanding (base64)
-    ├── foundry.toml
-    └── lib/forge-std/      ← submodule
+├── README.md                   ← kamu di sini (aturan, instalasi, cara menguji, tools)
+├── guidelines.md               ← panduan langkah demi langkah untuk pemula
+├── bcc-ukdw/                   ← aset logo
+└── ug-challenge/               ← semua challenge ada di sini
+    ├── scripts/
+    │   ├── check-lib.sh        ← mesin cek yang dipakai semua check.sh
+    │   └── variants.sh         ← khusus maintainer
+    ├── ug-challenge-1/ … ug-challenge-8/   ← satu folder = satu challenge (proyek Foundry mandiri)
+    │   ├── README.md           ← soal, materi wajib, hint
+    │   ├── src/                ← kontrak yang diaudit (JANGAN diubah)
+    │   ├── test/               ← tulis test-mu di sini
+    │   ├── ANSWERS.md          ← penjelasanmu
+    │   ├── FINDINGS.md         ← laporan bug
+    │   ├── check.sh            ← cek jawaban: ./check.sh [PART]
+    │   ├── .check-data         ← kontrak pembanding (base64)
+    │   ├── foundry.toml
+    │   └── lib/forge-std/      ← submodule
+    └── ug-challenge-9/         ← Lanjut Belajar (hanya README)
 ```
 
 ---

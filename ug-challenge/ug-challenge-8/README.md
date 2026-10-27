@@ -9,7 +9,7 @@
 | **Fokus** | Arsitektur bridge, `approve`/`transferFrom`, tanda tangan digital (`ecrecover`, EIP-191, EIP-712), signature replay |
 | **Cek jawaban** | `./check.sh` (lihat [Cek mandiri](#️-cek-mandiri-dengan-checksh)) |
 
-> ⚠️ **Sebelum mulai, baca [Aturan Utama](../README.md#️-aturan-utama--wajib-dibaca).**
+> ⚠️ **Sebelum mulai, baca [Aturan Utama](../../README.md#️-aturan-utama--wajib-dibaca).**
 > AI hanya boleh dipakai seperti Google, yaitu untuk mencari dokumentasi dan konsep. **Kode, penjelasan, dan laporan harus kamu tulis sendiri.**
 
 ---
@@ -96,7 +96,7 @@ Kerjakan **setelah** challenge ini selesai di [Damn Vulnerable DeFi](https://www
 ## 🧰 Setup
 
 ```bash
-cd ug-challenge-8
+cd ug-challenge/ug-challenge-8   # dari folder utama repo
 forge build
 ```
 
@@ -156,7 +156,7 @@ Contoh output:
 >
 > Versi-versi kontrak pembanding disimpan dalam base64 di `.check-data` supaya tidak membocorkan jawaban. Men-decode-nya sebelum selesai sama saja dengan menyontek diri sendiri.
 >
-> Pengguna Windows: jalankan dari terminal **Ubuntu (WSL)**, lihat [panduan instalasi](../README.md#️-instalasi-cukup-sekali).
+> Pengguna Windows: jalankan dari terminal **Ubuntu (WSL)**, lihat [panduan instalasi](../../README.md#️-instalasi-cukup-sekali).
 
 ---
 

@@ -1,6 +1,6 @@
 # 09 — Lanjut Belajar
 
-Selamat! Kalau kamu sudah menyelesaikan [UG-1 sampai UG-8](../README.md#️-daftar-challenge) dan bisa menjelaskan setiap baris test-mu, kamu sudah punya fondasi seorang auditor smart contract:
+Selamat! Kalau kamu sudah menyelesaikan [UG-1 sampai UG-8](../../README.md#️-daftar-challenge) dan bisa menjelaskan setiap baris test-mu, kamu sudah punya fondasi seorang auditor smart contract:
 
 - menulis **fuzz test** dan **invariant test** dengan handler,
 - membaca kode dengan curiga dan membandingkannya dengan dokumentasi,
@@ -104,7 +104,7 @@ Kalau sudah konsisten menemukan bug di First Flights, coba platform berikut:
 | [SWC Registry](https://swcregistry.io/) | Klasifikasi kelemahan smart contract yang umum (sudah tidak aktif diperbarui, tetapi masih bagus untuk dasar). |
 | [Ethereum-Jakarta/fullstack-web3-roadmap](https://github.com/Ethereum-Jakarta/fullstack-web3-roadmap) | Roadmap belajar fullstack web3 dari komunitas Indonesia. |
 
-Daftar tools audit (Slither, Aderyn, Echidna, Halmos, dan lainnya) ada di [README utama](../README.md#-tools-yang-membantu-audit).
+Daftar tools audit (Slither, Aderyn, Echidna, Halmos, dan lainnya) ada di [README utama](../../README.md#-tools-yang-membantu-audit).
 
 ---
 

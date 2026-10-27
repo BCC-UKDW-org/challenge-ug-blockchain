@@ -1,32 +1,32 @@
 [submodule "ug-challenge-1/lib/forge-std"]
-	path = ug-challenge-1/lib/forge-std
+	path = ug-challenge/ug-challenge-1/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-2/lib/forge-std"]
-	path = ug-challenge-2/lib/forge-std
+	path = ug-challenge/ug-challenge-2/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-3/lib/forge-std"]
-	path = ug-challenge-3/lib/forge-std
+	path = ug-challenge/ug-challenge-3/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-4/lib/forge-std"]
-	path = ug-challenge-4/lib/forge-std
+	path = ug-challenge/ug-challenge-4/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-5/lib/forge-std"]
-	path = ug-challenge-5/lib/forge-std
+	path = ug-challenge/ug-challenge-5/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-6/lib/forge-std"]
-	path = ug-challenge-6/lib/forge-std
+	path = ug-challenge/ug-challenge-6/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-7/lib/forge-std"]
-	path = ug-challenge-7/lib/forge-std
+	path = ug-challenge/ug-challenge-7/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
 [submodule "ug-challenge-8/lib/forge-std"]
-	path = ug-challenge-8/lib/forge-std
+	path = ug-challenge/ug-challenge-8/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
 	shallow = true
