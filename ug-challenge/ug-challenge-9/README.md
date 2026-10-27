@@ -95,6 +95,12 @@ Kalau sudah konsisten menemukan bug di First Flights, coba platform berikut:
 
 ---
 
+## 🗃️ Database Audit & Sumber Lengkap
+
+Daftar lengkap database finding, laporan audit dari firma keamanan, database hack, checklist, dan CTF ada di [**resource-learn-audit**](../../resource-learn-audit/).
+
+---
+
 ## 📚 Bacaan Tambahan
 
 | Sumber | Isi |

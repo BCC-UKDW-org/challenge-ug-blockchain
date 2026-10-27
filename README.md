@@ -313,6 +313,8 @@ Tidak wajib dipasang semuanya. Mulailah dari yang dipakai di challenge, lalu tam
 
 Sudah menyelesaikan UG-1 sampai UG-8? Lanjutkan ke [**09 — Lanjut Belajar**](./ug-challenge/ug-challenge-9/): Solodit, CodeHawks First Flights, Damn Vulnerable DeFi, dan jalur menuju audit kompetitif.
 
+Butuh database audit, laporan bug, checklist, atau CTF untuk latihan? Lihat [**resource-learn-audit**](./resource-learn-audit/): kumpulan sumber yang sudah dikelompokkan per kategori.
+
 ---
 
 ## 📁 Struktur Repositori
@@ -322,6 +324,7 @@ challenge-ug-blockchain/
 ├── README.md                   ← kamu di sini (aturan, instalasi, cara menguji, tools)
 ├── guidelines.md               ← panduan langkah demi langkah untuk pemula
 ├── bcc-ukdw/                   ← aset logo
+├── resource-learn-audit/       ← database audit, laporan bug, checklist, CTF
 └── ug-challenge/               ← semua challenge ada di sini
     ├── scripts/
     │   ├── check-lib.sh        ← mesin cek yang dipakai semua check.sh
